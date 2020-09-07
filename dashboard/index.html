@@ -16,6 +16,7 @@
 
 	<!-- Plotly.js -->
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="data.js"></script>
 
 	<style>
 		.bd-placeholder-img {
@@ -48,530 +49,538 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+				onchange="javascript:sveitarfelog(event)">
 				<div class="sidebar-sticky pt-3">
-					<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					<h6
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 						<span>Gögn</span>
 						<a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
 							<span data-feather="plus-circle"></span>
 						</a>
 					</h6>
-					<ul class="nav flex-column">
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="gogn" id="mb30">
-								<label for="mb30">30 mb/s</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="gogn" id="mb100">
-								<label for="mb100">100 mb/s</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="gogn" id="mb1000">
-								<label for="mb1000">1000 mb/s</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="gogn" id="ljos">
-								<label for="ljos">Ljósleiðari</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="gogn" id="tal">
-								<label for="tal">Talsamband</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="gogn" id="hahrada">
-								<label for="hahrada">Háhraðafarnet</label>
-							</div>
-						</li>						
-					</ul>
-					<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					<form action="" id="val_gogn">
+						<ul class="nav flex-column">
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="gogn" id="mb30">
+									<label for="mb30">30 mb/s</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="gogn" id="mb100">
+									<label for="mb100">100 mb/s</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="gogn" id="mb1000">
+									<label for="mb1000">1000 mb/s</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="gogn" id="ljos">
+									<label for="ljos">Ljósleiðari</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="gogn" id="tal">
+									<label for="tal">Talsamband</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="gogn" id="hahrada">
+									<label for="hahrada">Háhraðafarnet</label>
+								</div>
+							</li>
+						</ul>
+					</form>
+					<h6
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 						<span>Sveitarfélög</span>
 						<a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
 							<span data-feather="plus-circle"></span>
 						</a>
 					</h6>
-					<ul class="nav flex-column">
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="allt">
-								<label for="allt">Velja Allt</label> 
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="ekkert">
-								<label for="ekkert">Velja ekkert</label> 
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Landið allt" checked>
-								<label for="Landið allt">Landið allt</label> 
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Akrahreppur">
-								<label for="Akrahreppur">Akrahreppur</label> 
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Akraneskaupstaður">
-								<label for="Akraneskaupstaður">Akraneskaupstaður</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Akureyrarbær">
-								<label for="Akureyrarbær">Akureyrarbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Árneshreppur">
-								<label for="Árneshreppur">Árneshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Ásahreppur">
-								<label for="Ásahreppur">Ásahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Bláskógabyggð">
-								<label for="Bláskógabyggð">Bláskógabyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Blönduósbær">
-								<label for="Blönduósbær">Blönduósbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Bolungarvíkurkaupstaður">
-								<label for="Bolungarvíkurkaupstaður">Bolungarvíkurkaupstaður</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Borgarbyggð">
-								<label for="Borgarbyggð">Borgarbyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Borgarfjarðarhreppur">
-								<label for="Borgarfjarðarhreppur">Borgarfjarðarhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Dalabyggð">
-								<label for="Dalabyggð">Dalabyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Dalvíkurbyggð">
-								<label for="Dalvíkurbyggð">Dalvíkurbyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Djúpavogshreppur">
-								<label for="Djúpavogshreppur">Djúpavogshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Eyjafjarðarsveit">
-								<label for="Eyjafjarðarsveit">Eyjafjarðarsveit</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Eyja- og Miklaholtshreppur">
-								<label for="Eyja- og Miklaholtshreppur">Eyja- og Miklaholtshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Fjallabyggð">
-								<label for="Fjallabyggð">Fjallabyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Fjarðabyggð">
-								<label for="Fjarðabyggð">Fjarðabyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Fljótsdalshérað">
-								<label for="Fljótsdalshérað">Fljótsdalshérað</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Fljótsdalshreppur">
-								<label for="Fljótsdalshreppur">Fljótsdalshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Flóahreppur">
-								<label for="Flóahreppur">Flóahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Garðabær">
-								<label for="Garðabær">Garðabær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Grímsnes- og Grafningshreppur">
-								<label for="Grímsnes- og Grafningshreppur">Grímsnes- og Grafningshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Grindavíkurbær">
-								<label for="Grindavíkurbær">Grindavíkurbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Grundarfjarðarbær">
-								<label for="Grundarfjarðarbær">Grundarfjarðarbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Grýtubakkahreppur">
-								<label for="Grýtubakkahreppur">Grýtubakkahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Hafnarfjarðarbær">
-								<label for="Hafnarfjarðarbær">Hafnarfjarðarbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Helgafellssveit">
-								<label for="Helgafellssveit">Helgafellssveit</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Hörgársveit">
-								<label for="Hörgársveit">Hörgársveit</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Hrunamannahreppur">
-								<label for="Hrunamannahreppur">Hrunamannahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Húnavatnshreppur">
-								<label for="Húnavatnshreppur">Húnavatnshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Húnaþing vestra">
-								<label for="Húnaþing vestra">Húnaþing vestra</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Hvalfjarðarsveit">
-								<label for="Hvalfjarðarsveit">Hvalfjarðarsveit</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Hveragerðisbær">
-								<label for="Hveragerðisbær">Hveragerðisbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Ísafjarðarbær">
-								<label for="Ísafjarðarbær">Ísafjarðarbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Kaldrananeshreppur">
-								<label for="Kaldrananeshreppur">Kaldrananeshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Kjósarhreppur">
-								<label for="Kjósarhreppur">Kjósarhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Kópavogsbær">
-								<label for="Kópavogsbær">Kópavogsbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Langanesbyggð">
-								<label for="Langanesbyggð">Langanesbyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Mosfellsbær">
-								<label for="Mosfellsbær">Mosfellsbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Mýrdalshreppur">
-								<label for="Mýrdalshreppur">Mýrdalshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Norðurþing">
-								<label for="Norðurþing">Norðurþing</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Rangárþing eystra">
-								<label for="Rangárþing eystra">Rangárþing eystra</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Rangárþing ytra">
-								<label for="Rangárþing ytra">Rangárþing ytra</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Reykhólahreppur">
-								<label for="Reykhólahreppur">Reykhólahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Reykjanesbær">
-								<label for="Reykjanesbær">Reykjanesbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Reykjavíkurborg">
-								<label for="Reykjavíkurborg">Reykjavíkurborg</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Seltjarnarnesbær">
-								<label for="Seltjarnarnesbær">Seltjarnarnesbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Seyðisfjarðarkaupstaður">
-								<label for="Seyðisfjarðarkaupstaður">Seyðisfjarðarkaupstaður</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Skaftárhreppur">
-								<label for="Skaftárhreppur">Skaftárhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Skagabyggð">
-								<label for="Skagabyggð">Skagabyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Skeiða- og Gnúpverjahreppur">
-								<label for="Skeiða- og Gnúpverjahreppur">Skeiða- og Gnúpverjahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Skorradalshreppur">
-								<label for="Skorradalshreppur">Skorradalshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Skútustaðahreppur">
-								<label for="Skútustaðahreppur">Skútustaðahreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Snæfellsbær">
-								<label for="Snæfellsbær">Snæfellsbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Strandabyggð">
-								<label for="Strandabyggð">Strandabyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Stykkishólmsbær">
-								<label for="Stykkishólmsbær">Stykkishólmsbær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Súðavíkurhreppur">
-								<label for="Súðavíkurhreppur">Súðavíkurhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Suðurnesjabær">
-								<label for="Suðurnesjabær">Suðurnesjabær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Svalbarðshreppur">
-								<label for="Svalbarðshreppur">Svalbarðshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Svalbarðsstrandarhreppur">
-								<label for="Svalbarðsstrandarhreppur">Svalbarðsstrandarhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Sveitarfélagið Árborg">
-								<label for="Sveitarfélagið Árborg">Sveitarfélagið Árborg</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Sveitarfélagið Hornafjörður">
-								<label for="Sveitarfélagið Hornafjörður">Sveitarfélagið Hornafjörður</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Sveitarfélagið Ölfus">
-								<label for="Sveitarfélagið Ölfus">Sveitarfélagið Ölfus</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Sveitarfélagið Skagafjörður">
-								<label for="Sveitarfélagið Skagafjörður">Sveitarfélagið Skagafjörður</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Sveitarfélagið Skagaströnd">
-								<label for="Sveitarfélagið Skagaströnd">Sveitarfélagið Skagaströnd</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Sveitarfélagið Vogar">
-								<label for="Sveitarfélagið Vogar">Sveitarfélagið Vogar</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Tálknafjarðarhreppur">
-								<label for="Tálknafjarðarhreppur">Tálknafjarðarhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Tjörneshreppur">
-								<label for="Tjörneshreppur">Tjörneshreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Vestmannaeyjabær">
-								<label for="Vestmannaeyjabær">Vestmannaeyjabær</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Vesturbyggð">
-								<label for="Vesturbyggð">Vesturbyggð</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Vopnafjarðarhreppur">
-								<label for="Vopnafjarðarhreppur">Vopnafjarðarhreppur</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">
-								<input type="checkbox" name="svf" id="Þingeyjarsveit">
-								<label for="Þingeyjarsveit">Þingeyjarsveit</label>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								<span data-feather="users"></span>
-								Customers
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								<span data-feather="bar-chart-2"></span>
-								Reports
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">
-								<span data-feather="layers"></span>
-								Integrations
-							</a>
-						</li>
-					</ul>
+					<form action="" id="val_sveitarfelag">
+						<ul class="nav flex-column">
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="allt">
+									<label for="allt">Velja Allt</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="ekkert">
+									<label for="ekkert">Velja ekkert</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Landið allt" checked>
+									<label for="Landið allt">Landið allt</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Akrahreppur">
+									<label for="Akrahreppur">Akrahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Akraneskaupstaður">
+									<label for="Akraneskaupstaður">Akraneskaupstaður</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Akureyrarbær">
+									<label for="Akureyrarbær">Akureyrarbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Árneshreppur">
+									<label for="Árneshreppur">Árneshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Ásahreppur">
+									<label for="Ásahreppur">Ásahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Bláskógabyggð">
+									<label for="Bláskógabyggð">Bláskógabyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Blönduósbær">
+									<label for="Blönduósbær">Blönduósbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Bolungarvíkurkaupstaður">
+									<label for="Bolungarvíkurkaupstaður">Bolungarvíkurkaupstaður</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Borgarbyggð">
+									<label for="Borgarbyggð">Borgarbyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Borgarfjarðarhreppur">
+									<label for="Borgarfjarðarhreppur">Borgarfjarðarhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Dalabyggð">
+									<label for="Dalabyggð">Dalabyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Dalvíkurbyggð">
+									<label for="Dalvíkurbyggð">Dalvíkurbyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Djúpavogshreppur">
+									<label for="Djúpavogshreppur">Djúpavogshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Eyjafjarðarsveit">
+									<label for="Eyjafjarðarsveit">Eyjafjarðarsveit</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Eyja- og Miklaholtshreppur">
+									<label for="Eyja- og Miklaholtshreppur">Eyja- og Miklaholtshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Fjallabyggð">
+									<label for="Fjallabyggð">Fjallabyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Fjarðabyggð">
+									<label for="Fjarðabyggð">Fjarðabyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Fljótsdalshérað">
+									<label for="Fljótsdalshérað">Fljótsdalshérað</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Fljótsdalshreppur">
+									<label for="Fljótsdalshreppur">Fljótsdalshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Flóahreppur">
+									<label for="Flóahreppur">Flóahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Garðabær">
+									<label for="Garðabær">Garðabær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Grímsnes- og Grafningshreppur">
+									<label for="Grímsnes- og Grafningshreppur">Grímsnes- og Grafningshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Grindavíkurbær">
+									<label for="Grindavíkurbær">Grindavíkurbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Grundarfjarðarbær">
+									<label for="Grundarfjarðarbær">Grundarfjarðarbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Grýtubakkahreppur">
+									<label for="Grýtubakkahreppur">Grýtubakkahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Hafnarfjarðarbær">
+									<label for="Hafnarfjarðarbær">Hafnarfjarðarbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Helgafellssveit">
+									<label for="Helgafellssveit">Helgafellssveit</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Hörgársveit">
+									<label for="Hörgársveit">Hörgársveit</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Hrunamannahreppur">
+									<label for="Hrunamannahreppur">Hrunamannahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Húnavatnshreppur">
+									<label for="Húnavatnshreppur">Húnavatnshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Húnaþing vestra">
+									<label for="Húnaþing vestra">Húnaþing vestra</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Hvalfjarðarsveit">
+									<label for="Hvalfjarðarsveit">Hvalfjarðarsveit</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Hveragerðisbær">
+									<label for="Hveragerðisbær">Hveragerðisbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Ísafjarðarbær">
+									<label for="Ísafjarðarbær">Ísafjarðarbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Kaldrananeshreppur">
+									<label for="Kaldrananeshreppur">Kaldrananeshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Kjósarhreppur">
+									<label for="Kjósarhreppur">Kjósarhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Kópavogsbær">
+									<label for="Kópavogsbær">Kópavogsbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Langanesbyggð">
+									<label for="Langanesbyggð">Langanesbyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Mosfellsbær">
+									<label for="Mosfellsbær">Mosfellsbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Mýrdalshreppur">
+									<label for="Mýrdalshreppur">Mýrdalshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Norðurþing">
+									<label for="Norðurþing">Norðurþing</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Rangárþing eystra">
+									<label for="Rangárþing eystra">Rangárþing eystra</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Rangárþing ytra">
+									<label for="Rangárþing ytra">Rangárþing ytra</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Reykhólahreppur">
+									<label for="Reykhólahreppur">Reykhólahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Reykjanesbær">
+									<label for="Reykjanesbær">Reykjanesbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Reykjavíkurborg">
+									<label for="Reykjavíkurborg">Reykjavíkurborg</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Seltjarnarnesbær">
+									<label for="Seltjarnarnesbær">Seltjarnarnesbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Seyðisfjarðarkaupstaður">
+									<label for="Seyðisfjarðarkaupstaður">Seyðisfjarðarkaupstaður</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Skaftárhreppur">
+									<label for="Skaftárhreppur">Skaftárhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Skagabyggð">
+									<label for="Skagabyggð">Skagabyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Skeiða- og Gnúpverjahreppur">
+									<label for="Skeiða- og Gnúpverjahreppur">Skeiða- og Gnúpverjahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Skorradalshreppur">
+									<label for="Skorradalshreppur">Skorradalshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Skútustaðahreppur">
+									<label for="Skútustaðahreppur">Skútustaðahreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Snæfellsbær">
+									<label for="Snæfellsbær">Snæfellsbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Strandabyggð">
+									<label for="Strandabyggð">Strandabyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Stykkishólmsbær">
+									<label for="Stykkishólmsbær">Stykkishólmsbær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Súðavíkurhreppur">
+									<label for="Súðavíkurhreppur">Súðavíkurhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Suðurnesjabær">
+									<label for="Suðurnesjabær">Suðurnesjabær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Svalbarðshreppur">
+									<label for="Svalbarðshreppur">Svalbarðshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Svalbarðsstrandarhreppur">
+									<label for="Svalbarðsstrandarhreppur">Svalbarðsstrandarhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Sveitarfélagið Árborg">
+									<label for="Sveitarfélagið Árborg">Sveitarfélagið Árborg</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Sveitarfélagið Hornafjörður">
+									<label for="Sveitarfélagið Hornafjörður">Sveitarfélagið Hornafjörður</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Sveitarfélagið Ölfus">
+									<label for="Sveitarfélagið Ölfus">Sveitarfélagið Ölfus</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Sveitarfélagið Skagafjörður">
+									<label for="Sveitarfélagið Skagafjörður">Sveitarfélagið Skagafjörður</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Sveitarfélagið Skagaströnd">
+									<label for="Sveitarfélagið Skagaströnd">Sveitarfélagið Skagaströnd</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Sveitarfélagið Vogar">
+									<label for="Sveitarfélagið Vogar">Sveitarfélagið Vogar</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Tálknafjarðarhreppur">
+									<label for="Tálknafjarðarhreppur">Tálknafjarðarhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Tjörneshreppur">
+									<label for="Tjörneshreppur">Tjörneshreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Vestmannaeyjabær">
+									<label for="Vestmannaeyjabær">Vestmannaeyjabær</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Vesturbyggð">
+									<label for="Vesturbyggð">Vesturbyggð</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Vopnafjarðarhreppur">
+									<label for="Vopnafjarðarhreppur">Vopnafjarðarhreppur</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<div class="nav-link">
+									<input type="checkbox" name="svf" id="Þingeyjarsveit">
+									<label for="Þingeyjarsveit">Þingeyjarsveit</label>
+								</div>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<span data-feather="users"></span>
+									Customers
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<span data-feather="bar-chart-2"></span>
+									Reports
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<span data-feather="layers"></span>
+									Integrations
+								</a>
+							</li>
+						</ul>
+					</form>
 
-					<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					<h6
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 						<span>Saved reports</span>
 						<a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
 							<span data-feather="plus-circle"></span>
@@ -623,7 +632,7 @@
 				</div>
 
 				<div class="container-fluid">
-					<div id="tester"></div>
+					<div id="svf-fastanet"></div>
 				</div>
 
 				<h2>Section title</h2>
