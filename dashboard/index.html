@@ -34,7 +34,6 @@
 			}
 		}
 	</style>
-	<!-- Custom styles for this template -->
 	<link href="dashboard.css" rel="stylesheet">
 </head>
 
@@ -63,37 +62,37 @@
 						<ul class="nav flex-column">
 							<li class="nav-item">
 								<div class="nav-link">
-									<input type="checkbox" name="gogn" id="mb30">
+									<input type="checkbox" name="gogn" id="mb30" checked>
 									<label for="mb30">30 mb/s</label>
 								</div>
 							</li>
 							<li class="nav-item">
 								<div class="nav-link">
-									<input type="checkbox" name="gogn" id="mb100">
+									<input type="checkbox" name="gogn" id="mb100" checked>
 									<label for="mb100">100 mb/s</label>
 								</div>
 							</li>
 							<li class="nav-item">
 								<div class="nav-link">
-									<input type="checkbox" name="gogn" id="mb1000">
+									<input type="checkbox" name="gogn" id="mb1000" checked>
 									<label for="mb1000">1000 mb/s</label>
 								</div>
 							</li>
 							<li class="nav-item">
 								<div class="nav-link">
-									<input type="checkbox" name="gogn" id="ljos">
+									<input type="checkbox" name="gogn" id="ljos" checked>
 									<label for="ljos">Ljósleiðari</label>
 								</div>
 							</li>
 							<li class="nav-item">
 								<div class="nav-link">
-									<input type="checkbox" name="gogn" id="tal">
+									<input type="checkbox" name="gogn" id="tal" checked>
 									<label for="tal">Talsamband</label>
 								</div>
 							</li>
 							<li class="nav-item">
 								<div class="nav-link">
-									<input type="checkbox" name="gogn" id="hahrada">
+									<input type="checkbox" name="gogn" id="hahrada" checked>
 									<label for="hahrada">Háhraðafarnet</label>
 								</div>
 							</li>
@@ -623,8 +622,8 @@
 
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Dashboard</h1>
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+					<h1>Aðgangur lansmanna að fasta- og farnetum</h1>
 					<div class="btn-toolbar mb-2 mb-md-0">
 						<div class="btn-group mr-2">
 							<button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -636,9 +635,15 @@
 						</button>
 					</div>
 				</div>
+				<p class="border-bottom">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat laboriosam nemo rerum ab unde! Excepturi eius, a debitis doloremque esse quo qui eos rem officia non omnis vitae ea recusandae! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima et ad mollitia modi maiores, labore excepturi dolor officiis impedit totam soluta fuga pariatur nostrum ipsum quaerat reprehenderit sapiente ipsa commodi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, et delectus? Sint veritatis, cumque, non consequatur qui pariatur voluptate nobis, ducimus nostrum ipsa illo expedita atque iusto rerum. Voluptatibus, magni!</p>
 
+				<h2>Fastanet</h2>
 				<div class="container-fluid">
 					<div id="svf-fastanet"></div>
+				</div>
+				<h2>Farnet</h2>
+				<div class="container-fluid">
+					<div id="svf-farnet"></div>
 				</div>
 
 				<h2>Data</h2>
@@ -802,9 +807,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="script.js"></script>
-	<script>
-		pieCharts();
-	</script>
 </body>
 
 </html>
