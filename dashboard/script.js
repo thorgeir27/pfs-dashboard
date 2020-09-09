@@ -131,7 +131,20 @@ function sveitarfelog(event) {
     let layout = {barmode: 'group'}
 
     Plotly.newPlot($('#svf-fastanet')[0], data, layout)
+}
 
+function pieCharts() {
+    let pieData = pfsData.filter(x => (x.data != "sveitarfelog"));
+    let pieValues = [];
+
+    pieData.forEach(x => {
+        pieValues.push([x.hlutfall_tal*100, 100 - x.hlutfall_tal*100]);
+        pieValues.push([x.hlutfall_hh*100, 100 - x.hlutfall_hh*100]);
+    });
+
+    
+
+    Plotly.newPlot($('#pie-charts')[0], pData, pieLayout);
 }
 
 
