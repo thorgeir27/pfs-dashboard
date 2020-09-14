@@ -160,7 +160,16 @@ function sveitarfelog(event) {
     }
 
 
-    let layout = {barmode: 'group'}
+    let layout = {
+        barmode: 'group',
+        margin: {
+            l: 50,
+            r: 50,
+            b: 50,
+            t: 10,
+            pad: 4
+          }
+    }
 
     Plotly.newPlot($('#svf-fastanet')[0], fastData, layout)
     Plotly.newPlot($('#svf-farnet')[0], farData, layout)
