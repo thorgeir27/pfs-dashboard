@@ -171,8 +171,8 @@ function sveitarfelog(event) {
           }
     }
 
-    Plotly.newPlot($('#svf-fastanet')[0], fastData, layout)
-    Plotly.newPlot($('#svf-farnet')[0], farData, layout)
+    Plotly.newPlot($('#svf-fastanet')[0], fastData, layout, {displayModeBar: false});
+    Plotly.newPlot($('#svf-farnet')[0], farData, layout, {displayModeBar: false});
 }
 
 function pieCharts() {
