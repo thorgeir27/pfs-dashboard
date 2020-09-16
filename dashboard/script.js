@@ -63,14 +63,14 @@ function sveitarfelog(event) {
         new Trace('100 Mb/s', green),
         new Trace('1 Gb/s', mustard),
         new Trace('Ljósleiðari', red),
-        new Trace('30 Mb/sT', blueT),
-        new Trace('30 Mb/sD', blueD),
-        new Trace('100 Mb/sT', greenT),
-        new Trace('100 Mb/sD', greenD),
-        new Trace('1 Gb/sT', mustardT),
-        new Trace('1 Gb/sF', mustardD),
-        new Trace('LjósleiðariT', redT),
-        new Trace('LjósleiðariD', redD)
+        new Trace('30 Mb/s í þéttbýli', blueT),
+        new Trace('30 Mb/s í dreifbýli', blueD),
+        new Trace('100 Mb/s í þéttbýli', greenT),
+        new Trace('100 Mb/s í dreifbýli', greenD),
+        new Trace('1 Gb/s í þéttbýli', mustardT),
+        new Trace('1 Gb/s í dreifbýli', mustardD),
+        new Trace('Ljósleiðari í þéttbýli', redT),
+        new Trace('Ljósleiðari í dreifbýli', redD)
         
     ];
 
@@ -90,8 +90,7 @@ function sveitarfelog(event) {
         if (svfSelected[i].checked) {
             svf = svfSelected[i].id;
             svfComp = svfData.filter(x => (x.sveitarfelag == svf))[0];
-
-            if (gognSelected[6].checked) {
+            if ($("#fastanet-byggd")[0].checked) {
                 if (gognSelected[0].checked) {
                     fastData[4].x.push(svf);
                     fastData[4].y.push((svfComp.t_30/svfComp.thettbyli_fjoldi)*100);
@@ -116,18 +115,6 @@ function sveitarfelog(event) {
                     fastData[11].x.push(svf);
                     fastData[11].y.push((svfComp.d_ljos/svfComp.dreifbyli_fjoldi)*100);
                 }
-                if (gognSelected[4].checked) {
-                    farData[2].x.push(svf);
-                    farData[2].y.push((svfComp.t_talsamband/svfComp.thettbyli_fjoldi)*100);
-                    farData[3].x.push(svf);
-                    farData[3].y.push((svfComp.d_talsamband/svfComp.dreifbyli_fjoldi)*100);
-                }
-                if (gognSelected[5].checked) {
-                    farData[4].x.push(svf);
-                    farData[4].y.push((svfComp.t_hahrada/svfComp.thettbyli_fjoldi)*100);
-                    farData[5].x.push(svf);
-                    farData[5].y.push((svfComp.d_hahrada/svfComp.dreifbyli_fjoldi)*100);
-                }
             } else {
                 if (gognSelected[0].checked) {
                     fastData[0].x.push(svf);
@@ -145,6 +132,21 @@ function sveitarfelog(event) {
                     fastData[3].x.push(svf);
                     fastData[3].y.push((svfComp.d_ljos + svfComp.t_ljos)/(svfComp.thettbyli_fjoldi + svfComp.dreifbyli_fjoldi)*100);
                 }
+            }
+            if ($("#farnet-byggd")[0].checked) {
+                if (gognSelected[4].checked) {
+                    farData[2].x.push(svf);
+                    farData[2].y.push((svfComp.t_talsamband/svfComp.thettbyli_fjoldi)*100);
+                    farData[3].x.push(svf);
+                    farData[3].y.push((svfComp.d_talsamband/svfComp.dreifbyli_fjoldi)*100);
+                }
+                if (gognSelected[5].checked) {
+                    farData[4].x.push(svf);
+                    farData[4].y.push((svfComp.t_hahrada/svfComp.thettbyli_fjoldi)*100);
+                    farData[5].x.push(svf);
+                    farData[5].y.push((svfComp.d_hahrada/svfComp.dreifbyli_fjoldi)*100);
+                }
+            } else {
                 if (gognSelected[4].checked) {
                     farData[0].x.push(svf);
                     farData[0].y.push((svfComp.t_talsamband + svfComp.d_talsamband)/(svfComp.thettbyli_fjoldi + svfComp.dreifbyli_fjoldi)*100);
@@ -155,13 +157,17 @@ function sveitarfelog(event) {
                 }
 
             }
-
         }
     }
 
 
     let layout = {
         barmode: 'group',
+        hovermode: 'closest',
+        yaxis: {
+            title: '%',
+            nticks: 5
+            },
         margin: {
             l: 50,
             r: 50,
@@ -178,6 +184,7 @@ function sveitarfelog(event) {
 function pieCharts() {
     let pieData = pfsData.filter(x => (x.data != "sveitarfelog"));
     let layout = {
+        showlegend: false,
         grid: {
             rows: 1,
             columns:2
@@ -187,26 +194,32 @@ function pieCharts() {
     pieData.forEach(x => {
         data = [
             {
-                values: [x.hlutfall_tal*100, 100 - x.hlutfall_tal*100],
+                values: [x.hlutfall_tal, 1 - x.hlutfall_tal],
+                labels: ['Talsamband', ' '],
+                textinfo: 'label+percent',
+                hoverinfo: 'none',
                 name: x.data,
                 type: 'pie',
-                marker: {colors: [blue, green]},
+                marker: {colors: [blue, red]},
                 domain: {
                     row: 0,
                     column: 0
                 }
             }, {
                 values: [x.hlutfall_hh*100, 100 - x.hlutfall_hh*100],
+                labels: ['Háhraðafarnet', ' '],
+                textinfo: 'label+percent',
+                hoverinfo: 'none',
                 name: x.data,
                 type: 'pie',
-                marker: {colors: [blue, green]},
+                marker: {colors: [green, red]},
                 domain: {
                     row: 0,
                     column: 1
                 }
             }
         ]
-        layout.title = x.data
+        layout.title = x.name
         Plotly.newPlot($('#' + x.data)[0], data, layout);
     });
 }
@@ -221,6 +234,7 @@ class Trace {
         this.marker = {
             color: clr
         };
+        this.hovertemplate = "%{y:.2f}%";
 
     }
 }
