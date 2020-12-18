@@ -168,6 +168,9 @@ function sveitarfelog(event) {
             title: '%',
             nticks: 5
             },
+        xaxis: {
+            automargin: true
+        },
         margin: {
             l: 50,
             r: 50,
